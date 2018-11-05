@@ -25,14 +25,32 @@ class scaffoldHome extends StatelessWidget
                 child: new Container(
                     child: new InkWell(
                       child: new Text("Button",
-                      style:new TextStyle(fontSize: 28.0)),
+                          style: new TextStyle(fontSize: 28.0)),
                       onTap: () => debugPrint("Button Pressed"),
                       //highlightColor: Colors.pinkAccent,
                       splashColor: Colors.yellowAccent,
 
                     )
                 )
-            )
+            ),backgroundColor: Colors.grey.shade400,
+            bottomNavigationBar: new BottomNavigationBar(items: [
+
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.add), title: new Text("Print")),
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.print), title: new Text("Circle")),
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.missed_video_call), title: new Text("airPlay")),
+//              new BottomNavigationBarItem(
+//                  icon: new IconButton(icon: Icon(Icons.play_arrow)),
+//                  title: new Text("arrow")),
+
+
+            ], onTap: (int i) => debugPrint("$i tapped"),
+
+              fixedColor: Colors.green.shade400,
+
+            ),
         )
     );
   }
