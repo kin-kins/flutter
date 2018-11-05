@@ -25,14 +25,14 @@ class scaffoldHome extends StatelessWidget
                 child: new Container(
                     child: new InkWell(
                       child: new Text("Button",
-                          style: new TextStyle(fontSize: 28.0)),
+                          style: new TextStyle(fontSize: 18.0,color: Colors.white),),
                       onTap: () => debugPrint("Button Pressed"),
                       //highlightColor: Colors.pinkAccent,
                       splashColor: Colors.yellowAccent,
 
                     )
                 )
-            ),backgroundColor: Colors.grey.shade400,
+            ),backgroundColor: Colors.black,
             bottomNavigationBar: new BottomNavigationBar(items: [
 
               new BottomNavigationBarItem(
@@ -51,6 +51,12 @@ class scaffoldHome extends StatelessWidget
               fixedColor: Colors.green.shade400,
 
             ),
+          floatingActionButton: new FloatingActionButton(onPressed: ()=> debugPrint("floating Tapped"),
+          child:  new Icon(Icons.add),
+
+
+          ),
+
         )
     );
   }
