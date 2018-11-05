@@ -5,6 +5,7 @@ class scaffoldHome extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     void onPress() {
       print("tapped");
     }
@@ -14,17 +15,18 @@ class scaffoldHome extends StatelessWidget
 
               title: new Text("Scaffold", textAlign: TextAlign.left,
                 textDirection: TextDirection.ltr,),
-              backgroundColor: Colors.pinkAccent,
+              backgroundColor: Colors.green,
               actions: <Widget>[
                 new IconButton(icon: new Icon(Icons.send),
                     onPressed: () => debugPrint("send tapped!")),
                 new IconButton(icon: new Icon(Icons.search), onPressed: onPress)
               ],
             ),
+            backgroundColor: Colors.greenAccent.shade400,
             body: new Center(
                 child: new bodyScaffold(),
                 ),
-            backgroundColor: Colors.black,
+
             bottomNavigationBar: new BottomNavigationBar(items: [
 
               new BottomNavigationBarItem(
@@ -40,7 +42,7 @@ class scaffoldHome extends StatelessWidget
 
             ], onTap: (int i) => debugPrint("$i tapped"),
 
-              fixedColor: Colors.green.shade400,
+              fixedColor: Colors.green.shade300,
 
             ),
           floatingActionButton: new FloatingActionButton(onPressed: ()=> debugPrint("floating Tapped"),
@@ -62,7 +64,10 @@ class bodyScaffold extends StatelessWidget
     // TODO: implement build
     return new GestureDetector(
         onTap:(){
-          final snackBar=new SnackBar(content: new Text("Tap Recognised"));
+          final snackBar=new SnackBar(content: new Text("Tap Recognised"),
+            backgroundColor: Theme.of(context).backgroundColor,
+            duration: new Duration(milliseconds: 500));
+
           Scaffold.of(context).showSnackBar(snackBar);
 
         },
