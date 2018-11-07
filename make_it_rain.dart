@@ -1,86 +1,93 @@
 import "package:flutter/material.dart";
-
-class scaffoldHome extends StatelessWidget
+class stateful extends StatefulWidget
 {
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-
-    void onPress() {
-      print("tapped");
-    }
-    return (
-        new Scaffold(
-            appBar: new AppBar(
-
-              title: new Text("Scaffold", textAlign: TextAlign.left,
-                textDirection: TextDirection.ltr,),
-              backgroundColor: Colors.green,
-              actions: <Widget>[
-                new IconButton(icon: new Icon(Icons.send),
-                    onPressed: () => debugPrint("send tapped!")),
-                new IconButton(icon: new Icon(Icons.search), onPressed: onPress)
-              ],
-            ),
-            backgroundColor: Colors.greenAccent.shade400,
-            body: new Center(
-                child: new bodyScaffold(),
-                ),
-
-            bottomNavigationBar: new BottomNavigationBar(items: [
-
-              new BottomNavigationBarItem(
-                  icon: new Icon(Icons.add), title: new Text("Print")),
-              new BottomNavigationBarItem(
-                  icon: new Icon(Icons.print), title: new Text("Circle")),
-              new BottomNavigationBarItem(
-                  icon: new Icon(Icons.missed_video_call), title: new Text("airPlay")),
-//              new BottomNavigationBarItem(
-//                  icon: new IconButton(icon: Icon(Icons.play_arrow)),
-//                  title: new Text("arrow")),
-
-
-            ], onTap: (int i) => debugPrint("$i tapped"),
-
-              fixedColor: Colors.green.shade300,
-
-            ),
-          floatingActionButton: new FloatingActionButton(onPressed: ()=> debugPrint("floating Tapped"),
-          child:  new Icon(Icons.add),
-
-
-          ),
-
-        )
-    );
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return new makeItRain();
   }
 
 }
 
-class bodyScaffold extends StatelessWidget
-{
+
+
+
+
+class makeItRain extends State<stateful> {
   @override
+  int _money=1000;
+  void _rain()
+  {
+    setState(() {
+
+    });
+    _money+=400;
+    debugPrint("$_money");
+  }
+  Color cond()
+  {
+    if(_money>10000)
+      return Colors.green;
+    else
+      return Colors.blue;
+  }
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new GestureDetector(
-        onTap:(){
-          final snackBar=new SnackBar(content: new Text("Tap Recognised"),
-            backgroundColor: Theme.of(context).backgroundColor,
-            duration: new Duration(milliseconds: 500));
-
-          Scaffold.of(context).showSnackBar(snackBar);
-
-        },
-       child: new Container(
-          padding: new EdgeInsets.all(15.0),
-          decoration: new BoxDecoration(
-            color: Theme.of(context).buttonColor,
-            borderRadius: new BorderRadius.circular(10.0),
+    return (new Scaffold(
+        appBar: new AppBar(
+          title: new Text(
+            "Make It Rain",
+            textAlign: TextAlign.left,
+            textDirection: TextDirection.ltr,
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.normal,
+            ),
           ),
-          child: new Text("Button"),
+          backgroundColor: Colors.greenAccent,
+          actions: <Widget>[
+            new IconButton(
+                icon: new Icon(Icons.search),
+                onPressed: () => debugPrint("Search Tapped"))
+          ],
+        ),
+        body: new Center(
+            child: new Container(
+                child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text("GET RICH !",
+                textDirection: TextDirection.ltr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 32.0,
+                )),
+            new Text("$_money",
+                textDirection: TextDirection.ltr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 60.0,
+                    color:cond()
+                )
+            ),
+            new GestureDetector(onTap:()=>_rain(),
+              child:new Container(
+                padding: EdgeInsets.all(15.0),
+                decoration: new BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.greenAccent.shade400),
+                child: new Text("Rain"),
+
+            )
+            ),
+          ],
         )
+            )
+        )
+    )
     );
   }
-
-
 }
